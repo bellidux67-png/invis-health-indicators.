@@ -12,6 +12,9 @@
 	"entrypoints": {
 		"client": [
 			"dev.estia.invishealth.InvisHealthClient"
+		],
+		"modmenu": [
+			"dev.estia.invishealth.ModMenuIntegration"
 		]
 	},
 	"depends": {
@@ -19,5 +22,8 @@
 		"minecraft": "~1.21.11",
 		"java": ">=21",
 		"fabric-api": "*"
+	},
+	"suggests": {
+		"modmenu": "*"
 	}
 }

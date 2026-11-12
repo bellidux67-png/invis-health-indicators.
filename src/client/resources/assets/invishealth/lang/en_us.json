@@ -5,5 +5,9 @@
 	"invishealth.msg.on": "Health indicators: ON",
 	"invishealth.msg.off": "Health indicators: OFF",
 	"invishealth.msg.mobs_on": "Mob hearts: ON",
-	"invishealth.msg.mobs_off": "Mob hearts: OFF (players only)"
+	"invishealth.msg.mobs_off": "Mob hearts: OFF (players only)",
+	"invishealth.config.title": "Invis Health Indicators",
+	"invishealth.config.enabled": "Health Indicators",
+	"invishealth.config.show_mobs": "Mob Hearts",
+	"invishealth.config.show_invisible": "Invisible Player Hearts"
 }

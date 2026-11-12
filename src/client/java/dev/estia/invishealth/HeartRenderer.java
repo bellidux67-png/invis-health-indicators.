@@ -42,7 +42,8 @@ public final class HeartRenderer {
 	private HeartRenderer() { }
 
 	public static void render(WorldRenderContext context) {
-		if (!InvisHealthClient.enabled) return;
+		InvisHealthConfig cfg = InvisHealthConfig.INSTANCE;
+		if (!cfg.enabled) return;
 
 		Minecraft mc = Minecraft.getInstance();
 		if (mc.level == null || mc.player == null || mc.options.hideGui) return;
@@ -59,7 +60,8 @@ public final class HeartRenderer {
 			if (!(entity instanceof LivingEntity living)) continue;
 			if (living instanceof ArmorStand || !living.isAlive()) continue;
 			if (living instanceof Player p && p.isSpectator()) continue;
-			if (!InvisHealthClient.showMobs && !(living instanceof Player)) continue;
+			if (!cfg.showMobs && !(living instanceof Player)) continue;
+			if (!cfg.showInvisible && living.isInvisible()) continue;
 			// Don't draw your own hearts in first person.
 			if (living == mc.getCameraEntity() && !camera.isDetached()) continue;
 
