@@ -1,0 +1,9 @@
+{
+	"key.category.invishealth.main": "Invis Health Indicators",
+	"key.invishealth.toggle": "Toggle Health Indicators",
+	"key.invishealth.toggle_mobs": "Toggle Mob Hearts (players always shown)",
+	"invishealth.msg.on": "Health indicators: ON",
+	"invishealth.msg.off": "Health indicators: OFF",
+	"invishealth.msg.mobs_on": "Mob hearts: ON",
+	"invishealth.msg.mobs_off": "Mob hearts: OFF (players only)"
+}

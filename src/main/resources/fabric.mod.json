@@ -1,0 +1,23 @@
+{
+	"schemaVersion": 1,
+	"id": "invishealth",
+	"version": "${version}",
+	"name": "Invis Health Indicators",
+	"description": "Shows hearts above players and mobs, including players who are invisible from potions.",
+	"authors": [
+		"Estia Devs"
+	],
+	"license": "MIT",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"dev.estia.invishealth.InvisHealthClient"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.18.1",
+		"minecraft": "~1.21.11",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
