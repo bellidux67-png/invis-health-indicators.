@@ -10,7 +10,7 @@ from a potion** (they get a purple `[Invis]` tag). Client-side only.
   Rebind under Options → Controls → Key Binds.
 
 ## Build
-Needs Java 21 (JDK). In this folder run:
+Needs Java 25 (JDK) to build (the mod itself runs on Java 21+). In this folder run:
 
 - Windows: `gradlew.bat build`
 - Mac/Linux: `./gradlew build`
