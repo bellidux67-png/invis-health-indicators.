@@ -73,6 +73,7 @@ public final class HeartRenderer {
 			// Sit above the vanilla name-tag slot so the two never overlap.
 			double yOffset = living.getBbHeight() + 0.5;
 			if (living instanceof Player || living.hasCustomName()) yOffset += 0.3;
+			yOffset += Mth.clamp(cfg.heightOffset, InvisHealthConfig.MIN_HEIGHT, InvisHealthConfig.MAX_HEIGHT);
 
 			matrices.pushPose();
 			matrices.translate(pos.x - camPos.x, pos.y - camPos.y + yOffset, pos.z - camPos.z);

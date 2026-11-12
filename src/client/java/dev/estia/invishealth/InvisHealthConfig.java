@@ -23,6 +23,11 @@ public final class InvisHealthConfig {
 	public boolean showMobs = true;
 	/** Hearts above players who are invisible from a potion. */
 	public boolean showInvisible = true;
+	/** Extra height above the default spot, in blocks (negative moves the hearts down). */
+	public double heightOffset = 0.0;
+
+	public static final double MIN_HEIGHT = -1.5;
+	public static final double MAX_HEIGHT = 2.0;
 
 	public static void load() {
 		if (!Files.exists(FILE)) {

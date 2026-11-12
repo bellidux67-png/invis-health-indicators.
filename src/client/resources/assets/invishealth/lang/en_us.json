@@ -9,5 +9,7 @@
 	"invishealth.config.title": "Invis Health Indicators",
 	"invishealth.config.enabled": "Health Indicators",
 	"invishealth.config.show_mobs": "Mob Hearts",
-	"invishealth.config.show_invisible": "Invisible Player Hearts"
+	"invishealth.config.show_invisible": "Invisible Player Hearts",
+	"invishealth.config.height": "Heart Height",
+	"invishealth.config.reset": "Reset"
 }

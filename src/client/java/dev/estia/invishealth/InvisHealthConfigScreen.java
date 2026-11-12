@@ -5,7 +5,9 @@ import java.util.function.Supplier;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.AbstractSliderButton;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.util.Mth;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
@@ -36,8 +38,13 @@ public class InvisHealthConfigScreen extends Screen {
 		addToggle(x, y + SPACING * 2, "invishealth.config.show_invisible",
 				() -> cfg.showInvisible, v -> cfg.showInvisible = v);
 
+		HeightSlider slider = this.addRenderableWidget(new HeightSlider(x, y + SPACING * 3, BUTTON_WIDTH - 54, BUTTON_HEIGHT));
+		this.addRenderableWidget(Button.builder(Component.translatable("invishealth.config.reset"), b -> slider.reset())
+				.bounds(x + BUTTON_WIDTH - 50, y + SPACING * 3, 50, BUTTON_HEIGHT)
+				.build());
+
 		this.addRenderableWidget(Button.builder(CommonComponents.GUI_DONE, b -> this.onClose())
-				.bounds(x, y + SPACING * 4, BUTTON_WIDTH, BUTTON_HEIGHT)
+				.bounds(x, y + SPACING * 5, BUTTON_WIDTH, BUTTON_HEIGHT)
 				.build());
 	}
 
@@ -56,6 +63,43 @@ public class InvisHealthConfigScreen extends Screen {
 		return Component.translatable(key).append(": ").append(on
 				? Component.literal("ON").withStyle(ChatFormatting.GREEN)
 				: Component.literal("OFF").withStyle(ChatFormatting.RED));
+	}
+
+	/** Slider for how high the hearts sit, in steps of 0.1 blocks. */
+	private static class HeightSlider extends AbstractSliderButton {
+		private static final double RANGE = InvisHealthConfig.MAX_HEIGHT - InvisHealthConfig.MIN_HEIGHT;
+
+		HeightSlider(int x, int y, int width, int height) {
+			super(x, y, width, height, Component.empty(), toSlider(InvisHealthConfig.INSTANCE.heightOffset));
+			this.updateMessage();
+		}
+
+		private static double toSlider(double offset) {
+			return Mth.clamp((offset - InvisHealthConfig.MIN_HEIGHT) / RANGE, 0.0, 1.0);
+		}
+
+		private double offset() {
+			return Math.round((InvisHealthConfig.MIN_HEIGHT + this.value * RANGE) * 10.0) / 10.0;
+		}
+
+		void reset() {
+			this.value = toSlider(0.0);
+			this.applyValue();
+			this.updateMessage();
+		}
+
+		@Override
+		protected void updateMessage() {
+			double offset = offset();
+			String text = (offset > 0 ? "+" : "") + String.format(java.util.Locale.ROOT, "%.1f", offset);
+			this.setMessage(Component.translatable("invishealth.config.height").append(": " + text));
+		}
+
+		@Override
+		protected void applyValue() {
+			InvisHealthConfig.INSTANCE.heightOffset = offset();
+			InvisHealthConfig.save();
+		}
 	}
 
 	@Override
