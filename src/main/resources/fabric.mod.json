@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "neegy",
+  "version": "${version}",
+  "name": "Neegy Client",
+  "description": "A small client utility mod with permission-aware flight and boat controls.",
+  "environment": "client",
+  "entrypoints": { "client": ["com.neegy.client.NeegyClient"] },
+  "depends": {
+    "fabricloader": ">=0.18.1",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
